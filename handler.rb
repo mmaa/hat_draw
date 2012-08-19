@@ -14,16 +14,7 @@ post '/' do
     @size = @names.size
   end
 
-  @groups = make_groups(@names, @size)
+  @groups = @names.each_slice(@size)
 
   slim :index
-end
-
-def make_groups(names, size)
-  remainder = names.size % size
-  if remainder.zero? || size - remainder == 1
-    names.each_slice(size)
-  else
-    make_groups(names, size - 1)
-  end
 end
