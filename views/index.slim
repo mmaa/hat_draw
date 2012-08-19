@@ -1,0 +1,19 @@
+- if @groups && @groups.any?
+  ol
+    - @groups.each do |group|
+      li
+        br
+        ul
+          - group.each do |name|
+            li= name
+
+form action='/' method='post'
+  label name='names' Names (one per line)
+  br
+  textarea cols='20' rows='20' name='names'
+  br
+  label name='size' Max Group Size
+  br
+  input name='size'
+  br
+  input type='submit'
