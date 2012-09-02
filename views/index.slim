@@ -11,6 +11,7 @@ form action='/' method='post'
   input type='submit'
 
 - if @groups && @groups.any?
+  h2 Groups
   ol
     - @groups.each do |group|
       li
