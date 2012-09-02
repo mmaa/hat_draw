@@ -2,10 +2,10 @@
   ol
     - @groups.each do |group|
       li
-        br
         ul
           - group.each do |name|
             li= name
+      br
 
 form action='/' method='post'
   label name='names' Names (one per line)
