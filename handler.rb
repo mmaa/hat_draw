@@ -6,7 +6,7 @@ get '/' do
 end
 
 post '/' do
-  @names = params[:names].split.uniq.shuffle
+  @names = params[:names].split(/[\n\r]/).uniq.shuffle.reject(&:empty?)
 
   if params[:size].strip =~ /^\d+$/
     @size = params[:size].strip.to_i
