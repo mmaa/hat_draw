@@ -6,7 +6,7 @@ get '/' do
 end
 
 post '/' do
-  @names = params[:names].split(/[\n\r]/).uniq.shuffle.reject(&:empty?)
+  @names = params[:names].split(/[\n\r]/).uniq.reject(&:empty?).each(&:strip!)
 
   if params[:size].strip =~ /^\d+$/
     @size = params[:size].strip.to_i
@@ -14,7 +14,7 @@ post '/' do
     @size = @names.size
   end
 
-  @groups = make_groups(@names, @size)
+  @groups = make_groups(@names.shuffle, @size)
 
   slim :index
 end
